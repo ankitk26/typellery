@@ -16,10 +16,10 @@ export default function ImageItem({ image }: IProps) {
 					objectFit="contain"
 				/>
 				<Flex alignItems="center" justifyContent="center" p={2} gap={2}>
-					<Avatar
-						src={image.user.profile_image.large}
-						// alt={image.user.username}
-					/>
+					<Avatar.Root>
+						<Avatar.Image src={image.user.profile_image.large} />
+						<Avatar.Fallback>{image.user.name[0]}</Avatar.Fallback>
+					</Avatar.Root>
 					<Text fontSize="md">{image.user.name}</Text>
 				</Flex>
 			</Box>

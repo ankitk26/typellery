@@ -7,10 +7,10 @@ export default function UserHeader() {
 	return (
 		<a href={current?.user.links.html} target="_blank" rel="noreferrer">
 			<Flex alignItems="center" gap={4}>
-				<Avatar
-					src={current?.user.profile_image.large}
-					// alt={current?.user.name}
-				/>
+				<Avatar.Root>
+					<Avatar.Image src={current?.user.profile_image.large} />
+					<Avatar.Fallback>{current?.user.name?.[0]}</Avatar.Fallback>
+				</Avatar.Root>
 				<Box
 					display="flex"
 					flexDirection="column"
