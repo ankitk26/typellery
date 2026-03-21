@@ -1,18 +1,214 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body,
+input,
+button,
+select,
+textarea {
+	font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Playfair Display", serif;
+}
+
+body {
+	background-color: #faf8f5;
+	color: #1a2e35;
+	min-height: 100vh;
+	position: relative;
+}
+
+/* ── Grain overlay ── */
+body::after {
+	content: "";
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 9999;
+	opacity: 0.025;
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+	background-repeat: repeat;
+	background-size: 200px 200px;
+}
+
 a {
 	text-decoration: none;
 	color: inherit;
+	transition: color 0.25s ease;
 }
 
+a:hover {
+	color: #0d9488;
+}
+
+/* ── Typography ── */
+.text-primary {
+	color: #1a2e35;
+}
+.text-body {
+	color: #3d5a66;
+}
+.text-muted {
+	color: #94a8b0;
+}
+.text-teal {
+	color: #0d9488;
+}
+.text-heading {
+	color: #1a2e35;
+	font-family: "Playfair Display", serif;
+}
+
+.label {
+	color: #94a8b0;
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+}
+
+/* ── Surfaces ── */
+.card {
+	background: white;
+	border: 1px solid #e2ded8;
+	border-radius: 16px;
+}
+
+.card-sm {
+	background: white;
+	border: 1px solid #e2ded8;
+	border-radius: 12px;
+}
+
+.surface-muted {
+	background: #f5f0eb;
+	border-radius: 12px;
+}
+
+/* ── Masonry Grid ── */
 .my-masonry-grid {
 	display: flex;
-	margin-left: -30px;
+	margin-left: -24px;
 	width: auto;
 }
+
 .my-masonry-grid_column {
-	padding-left: 30px;
+	padding-left: 24px;
 	background-clip: padding-box;
 }
 
 .my-masonry-grid_column > div {
-	margin-bottom: 30px;
+	margin-bottom: 24px;
+}
+
+/* ── Animations ── */
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+.animate-fade-in-up {
+	animation: fadeInUp 0.6s ease forwards;
+	opacity: 0;
+}
+
+.animate-fade-in {
+	animation: fadeIn 0.5s ease forwards;
+}
+
+.stagger-1 {
+	animation-delay: 0.05s;
+}
+.stagger-2 {
+	animation-delay: 0.1s;
+}
+.stagger-3 {
+	animation-delay: 0.15s;
+}
+.stagger-4 {
+	animation-delay: 0.2s;
+}
+.stagger-5 {
+	animation-delay: 0.25s;
+}
+.stagger-6 {
+	animation-delay: 0.3s;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+	width: 8px;
+}
+::-webkit-scrollbar-track {
+	background: #f5f0eb;
+}
+::-webkit-scrollbar-thumb {
+	background: #b0d4d1;
+	border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: #2a9d8f;
+}
+
+/* ── Selection ── */
+::selection {
+	background-color: #2a9d8f;
+	color: white;
+}
+
+/* ── Image card hover ── */
+.image-card {
+	border-radius: 12px;
+	overflow: hidden;
+	background: white;
+	border: 1px solid #e2ded8;
+	transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	cursor: pointer;
+}
+
+.image-card:hover {
+	transform: translateY(-4px);
+	box-shadow:
+		0 20px 40px -12px rgba(13, 79, 79, 0.15),
+		0 8px 16px -8px rgba(0, 0, 0, 0.08);
+	border-color: #b0d4d1;
+}
+
+.image-card img {
+	transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.image-card:hover img {
+	transform: scale(1.03);
 }

@@ -18,9 +18,9 @@ export default function ImagesGrid({ images }: ImagesGridProps) {
 			className="my-masonry-grid"
 			columnClassName="my-masonry-grid_column"
 		>
-			{images.map((image) => (
+			{images.map((image, index) => (
 				<div key={image.id}>
-					<ImageItem image={image} />
+					<ImageItem image={image} index={index} />
 				</div>
 			))}
 		</Masonry>

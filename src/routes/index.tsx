@@ -1,4 +1,4 @@
-import { Box, Spinner } from "@chakra-ui/react";
+import { Box, Flex, Heading, Spinner, Text } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import ImagesGrid from "@/components/images-grid";
@@ -31,21 +31,70 @@ export default function Main() {
 
 	return (
 		<Box>
+			{search && (
+				<Box mb={8} className="animate-fade-in">
+					<p className="label">Results for</p>
+					<Heading
+						as="h2"
+						fontSize={{ base: "2xl", md: "3xl" }}
+						fontWeight={600}
+						className="text-heading"
+						fontStyle="italic"
+					>
+						&ldquo;{search}&rdquo;
+					</Heading>
+				</Box>
+			)}
+
 			<PagePagination
 				currentPage={page}
 				totalPages={totalPages}
 				setCurrentPage={setCurrentPage}
 			/>
+
 			{isLoading ? (
-				<Spinner size="md" />
+				<Flex
+					justifyContent="center"
+					alignItems="center"
+					minH="50vh"
+					className="animate-fade-in"
+				>
+					<Spinner size="lg" color="#0d9488" />
+				</Flex>
 			) : (
 				<>
-					<ImagesGrid images={images} />
-					<PagePagination
-						currentPage={page}
-						totalPages={totalPages}
-						setCurrentPage={setCurrentPage}
-					/>
+					{images.length === 0 ? (
+						<Flex
+							justifyContent="center"
+							alignItems="center"
+							minH="40vh"
+							flexDirection="column"
+							gap={4}
+						>
+							<Text
+								className="text-heading"
+								fontSize="2xl"
+								fontStyle="italic"
+							>
+								No images found
+							</Text>
+							<p
+								className="text-muted"
+								style={{ fontSize: "0.875rem" }}
+							>
+								Try a different search term
+							</p>
+						</Flex>
+					) : (
+						<>
+							<ImagesGrid images={images} />
+							<PagePagination
+								currentPage={page}
+								totalPages={totalPages}
+								setCurrentPage={setCurrentPage}
+							/>
+						</>
+					)}
 				</>
 			)}
 		</Box>

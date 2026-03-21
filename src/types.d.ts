@@ -3,9 +3,10 @@ type Image = {
 	description?: string;
 	urls: {
 		small: string;
+		regular: string;
 	};
 	links: {
-		self: string;
+		download: string;
 	};
 	likes: number;
 	views?: number;
