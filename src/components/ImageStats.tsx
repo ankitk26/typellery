@@ -1,6 +1,5 @@
 import { Flex, Icon, Stack, Text } from "@chakra-ui/react";
 import { DownloadIcon, EyeIcon, HeartIcon } from "@heroicons/react/solid";
-import { Link } from "react-router-dom";
 import { useImage } from "../context/ImageContext";
 
 export default function ImageStats() {
@@ -31,14 +30,14 @@ export default function ImageStats() {
 				</Text>
 			</Stack>
 
-			<Link to={{ pathname: current?.links.self }} target="_blank">
+			<a href={current?.links.self} target="_blank" rel="noreferrer">
 				<Stack alignItems="center" justifyContent="center" p={2}>
 					<Icon as={DownloadIcon} color="teal.600" fontSize="xl" />
 					<Text color="teal.600" fontSize="md">
 						{current?.downloads?.toLocaleString()}
 					</Text>
 				</Stack>
-			</Link>
+			</a>
 		</Flex>
 	);
 }
