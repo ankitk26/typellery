@@ -1,0 +1,9 @@
+{
+	"formatter": {
+		"external": {
+			"command": "npx",
+			"arguments": ["oxlint", "--fix", "--format", "compact"]
+		}
+	},
+	"format_on_save": "on"
+}
