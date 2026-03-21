@@ -1,6 +1,6 @@
 import { Flex } from "@chakra-ui/react";
-import ImageStats from "@/components/ImageStats";
-import UserHeader from "@/components/UserHeader";
+import ImageStats from "@/components/image-stats";
+import UserHeader from "@/components/user-header";
 
 export default function ImageInfoHeader() {
 	return (

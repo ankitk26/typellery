@@ -1,6 +1,6 @@
 import { Input } from "@chakra-ui/react";
 import { RiSearchLine } from "@remixicon/react";
-import { useImage } from "@/context/ImageContext";
+import { useImage } from "@/context/image-context";
 
 export default function SearchForm() {
 	const { fetchSearchResults, setSearch, search } = useImage();
