@@ -1,6 +1,6 @@
 import { Flex, Heading } from "@chakra-ui/react";
 import { Link } from "@tanstack/react-router";
-import SearchForm from "./SearchForm";
+import SearchForm from "@/components/SearchForm";
 
 export default function Header() {
 	return (

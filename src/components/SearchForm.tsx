@@ -1,6 +1,6 @@
 import { SearchIcon } from "@heroicons/react/outline";
 import { Icon, Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
-import { useImage } from "../context/ImageContext";
+import { useImage } from "@/context/ImageContext";
 
 export default function SearchForm() {
 	const { fetchSearchResults, setSearch, search } = useImage();

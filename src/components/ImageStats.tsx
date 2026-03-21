@@ -1,6 +1,6 @@
 import { Flex, Icon, Stack, Text } from "@chakra-ui/react";
 import { DownloadIcon, EyeIcon, HeartIcon } from "@heroicons/react/solid";
-import { useImage } from "../context/ImageContext";
+import { useImage } from "@/context/ImageContext";
 
 export default function ImageStats() {
 	const { current } = useImage();
