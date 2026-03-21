@@ -11,8 +11,10 @@ export default function ImageInfoHeader({ image }: ImageInfoHeaderProps) {
 		<Flex
 			justifyContent="space-between"
 			alignItems="center"
-			flexDirection={{ base: "column", md: "row" }}
-			gap={8}
+			flexDirection="column"
+			gap={4}
+			className="card"
+			p={5}
 		>
 			<UserHeader image={image} />
 			<ImageStats image={image} />
