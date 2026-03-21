@@ -5,7 +5,7 @@ A photo gallery app powered by the [Unsplash](https://unsplash.com) API. Browse,
 ## Tech Stack
 
 - **React 19** + **TypeScript**
-- **Vite** — build tooling
+- **Vite Plus** — Vite-compatible build tooling by VoidZero
 - **Chakra UI** — component library
 - **TanStack Router** — URL-driven routing
 - **TanStack Query** — data fetching & caching
