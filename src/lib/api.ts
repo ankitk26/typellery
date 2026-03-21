@@ -20,7 +20,8 @@ export async function fetchPhotos(page: number): Promise<SearchResult> {
 		`${BASE_URL}/photos?per_page=${ITEMS_PER_PAGE}&page=${page}`,
 		config,
 	);
-	return { results: res.data, total_pages: 0 };
+	const hasNextPage = res.data.length === ITEMS_PER_PAGE;
+	return { results: res.data, total_pages: hasNextPage ? page + 1 : page };
 }
 
 export async function fetchSearch(
