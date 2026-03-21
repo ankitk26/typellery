@@ -1,7 +1,7 @@
 import { createRoute, createRouter } from "@tanstack/react-router";
 import { rootRoute } from "@/routes/__root";
-import Main from "@/routes/index";
 import ImageDetails from "@/routes/image.$id";
+import Main from "@/routes/index";
 
 const indexRoute = createRoute({
 	getParentRoute: () => rootRoute,
