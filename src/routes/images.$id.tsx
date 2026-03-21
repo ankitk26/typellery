@@ -18,7 +18,7 @@ export default function ImageDetails() {
 			<Flex
 				justifyContent="center"
 				alignItems="center"
-				h="calc(100vh - 120px)"
+				h="full"
 				className="animate-fade-in"
 			>
 				<Spinner size="lg" color="#0d9488" />
@@ -27,11 +27,11 @@ export default function ImageDetails() {
 	}
 
 	return (
-		<Flex flexDir="column" h="calc(100vh - 120px)" overflow="hidden">
+		<Flex flexDir="column" h="full" overflow="hidden">
 			<Box
 				as="button"
 				onClick={() => window.history.back()}
-				display="flex"
+				display="inline-flex"
 				alignItems="center"
 				gap={2}
 				mb={4}
