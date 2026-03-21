@@ -2,7 +2,11 @@ import { Flex } from "@chakra-ui/react";
 import ImageStats from "@/components/image-stats";
 import UserHeader from "@/components/user-header";
 
-export default function ImageInfoHeader() {
+interface ImageInfoHeaderProps {
+	image: Image;
+}
+
+export default function ImageInfoHeader({ image }: ImageInfoHeaderProps) {
 	return (
 		<Flex
 			justifyContent="space-between"
@@ -10,8 +14,8 @@ export default function ImageInfoHeader() {
 			flexDirection={{ base: "column", md: "row" }}
 			gap={8}
 		>
-			<UserHeader />
-			<ImageStats />
+			<UserHeader image={image} />
+			<ImageStats image={image} />
 		</Flex>
 	);
 }

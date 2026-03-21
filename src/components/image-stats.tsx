@@ -1,10 +1,11 @@
 import { Flex, Icon, Stack, Text } from "@chakra-ui/react";
 import { RiDownloadFill, RiEyeFill, RiHeartFill } from "@remixicon/react";
-import { useImage } from "@/context/image-context";
 
-export default function ImageStats() {
-	const { current } = useImage();
+interface ImageStatsProps {
+	image: Image;
+}
 
+export default function ImageStats({ image }: ImageStatsProps) {
 	return (
 		<Flex
 			border="1px"
@@ -19,22 +20,22 @@ export default function ImageStats() {
 			<Stack alignItems="center" justifyContent="center" p={2}>
 				<Icon as={RiHeartFill} color="teal.600" fontSize="xl" />
 				<Text color="teal.600" fontSize="md">
-					{current?.likes.toLocaleString()}
+					{image.likes.toLocaleString()}
 				</Text>
 			</Stack>
 
 			<Stack alignItems="center" justifyContent="center" p={2}>
 				<Icon as={RiEyeFill} color="teal.600" fontSize="xl" />
 				<Text color="teal.600" fontSize="md">
-					{current?.views?.toLocaleString()}
+					{image.views?.toLocaleString()}
 				</Text>
 			</Stack>
 
-			<a href={current?.links.self} target="_blank" rel="noreferrer">
+			<a href={image.links.self} target="_blank" rel="noreferrer">
 				<Stack alignItems="center" justifyContent="center" p={2}>
 					<Icon as={RiDownloadFill} color="teal.600" fontSize="xl" />
 					<Text color="teal.600" fontSize="md">
-						{current?.downloads?.toLocaleString()}
+						{image.downloads?.toLocaleString()}
 					</Text>
 				</Stack>
 			</a>

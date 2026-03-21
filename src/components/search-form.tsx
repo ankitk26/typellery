@@ -1,19 +1,18 @@
 import { Input } from "@chakra-ui/react";
 import { RiSearchLine } from "@remixicon/react";
-import { useImage } from "@/context/image-context";
+import { useNavigate } from "@tanstack/react-router";
+import { useState } from "react";
 
 export default function SearchForm() {
-	const { fetchSearchResults, setSearch, search } = useImage();
-
-	const handleSearch = (
-		e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-	) => {
-		setSearch(e.target.value);
-	};
+	const navigate = useNavigate();
+	const [value, setValue] = useState("");
 
 	const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		fetchSearchResults();
+		navigate({
+			to: "/",
+			search: { search: value, page: 1 },
+		});
 	};
 
 	return (
@@ -32,8 +31,8 @@ export default function SearchForm() {
 				<RiSearchLine size={16} color="gray" />
 			</span>
 			<Input
-				value={search}
-				onChange={handleSearch}
+				value={value}
+				onChange={(e) => setValue(e.target.value)}
 				color="white"
 				placeholder="Search images"
 				ps="2.25em"
