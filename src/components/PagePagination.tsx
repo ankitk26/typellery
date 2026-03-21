@@ -1,63 +1,55 @@
-import {
-	Pagination,
-	PaginationContainer,
-	PaginationNext,
-	PaginationPage,
-	PaginationPageGroup,
-	PaginationPrevious,
-	usePagination,
-} from "@ajna/pagination";
-import { Icon } from "@chakra-ui/react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
+import { Button, Flex } from "@chakra-ui/react";
+import { RiArrowLeftSLine, RiArrowRightSLine } from "@remixicon/react";
 import { useImage } from "@/context/ImageContext";
 
 export default function PagePagination() {
 	const { currentPage, totalPages, setCurrentPage } = useImage();
 
-	const { pagesCount, pages } = usePagination({
-		pagesCount: totalPages ? (totalPages > 10 ? 10 : totalPages) : 10,
-		initialState: { currentPage },
-	});
+	const pagesCount = totalPages ? (totalPages > 10 ? 10 : totalPages) : 10;
+	const pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
 
 	return (
-		<Pagination
-			pagesCount={pagesCount}
-			currentPage={currentPage}
-			onPageChange={setCurrentPage}
-		>
-			<PaginationContainer
-				mb={8}
-				alignItems="center"
-				justifyContent="center"
+		<Flex mb={8} alignItems="center" justifyContent="center" gap={2}>
+			<Button
+				size="sm"
+				variant="ghost"
+				onClick={() => setCurrentPage((p: number) => Math.max(1, p - 1))}
+				disabled={currentPage === 1}
 			>
-				<PaginationPrevious>
-					<Icon as={ChevronLeftIcon} />
-				</PaginationPrevious>
-				<PaginationPageGroup mx={4} gap={2}>
-					{pages.map((page) => {
-						const isCurrent = currentPage === page;
-						return (
-							<PaginationPage
-								w={4}
-								h={4}
-								p={4}
-								rounded="full"
-								color={isCurrent ? "white" : "teal.600"}
-								border={isCurrent ? "2px" : "1px"}
-								borderColor="teal.600"
-								fontSize="sm"
-								key={`pagination_page_${page}`}
-								bg={isCurrent ? "teal.600" : "transparent"}
-								page={page}
-								onClick={() => setCurrentPage(page)}
-							/>
-						);
-					})}
-				</PaginationPageGroup>
-				<PaginationNext>
-					<Icon as={ChevronRightIcon} />
-				</PaginationNext>
-			</PaginationContainer>
-		</Pagination>
+				<RiArrowLeftSLine size={18} />
+			</Button>
+
+			{pages.map((page) => {
+				const isCurrent = currentPage === page;
+				return (
+					<Button
+						key={`pagination_page_${page}`}
+						size="sm"
+						w={8}
+						h={8}
+						rounded="full"
+						color={isCurrent ? "white" : "teal.600"}
+						border={isCurrent ? "2px" : "1px"}
+						borderColor="teal.600"
+						fontSize="sm"
+						bg={isCurrent ? "teal.600" : "transparent"}
+						onClick={() => setCurrentPage(page)}
+					>
+						{page}
+					</Button>
+				);
+			})}
+
+			<Button
+				size="sm"
+				variant="ghost"
+				onClick={() =>
+					setCurrentPage((p: number) => Math.min(pagesCount, p + 1))
+				}
+				disabled={currentPage === pagesCount}
+			>
+				<RiArrowRightSLine size={18} />
+			</Button>
+		</Flex>
 	);
 }

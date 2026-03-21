@@ -1,5 +1,5 @@
 import { Flex, Icon, Stack, Text } from "@chakra-ui/react";
-import { DownloadIcon, EyeIcon, HeartIcon } from "@heroicons/react/solid";
+import { RiDownloadFill, RiEyeFill, RiHeartFill } from "@remixicon/react";
 import { useImage } from "@/context/ImageContext";
 
 export default function ImageStats() {
@@ -17,14 +17,14 @@ export default function ImageStats() {
 			mb={{ base: 8, md: 0 }}
 		>
 			<Stack alignItems="center" justifyContent="center" p={2}>
-				<Icon as={HeartIcon} color="teal.600" fontSize="xl" />
+				<Icon as={RiHeartFill} color="teal.600" fontSize="xl" />
 				<Text color="teal.600" fontSize="md">
 					{current?.likes.toLocaleString()}
 				</Text>
 			</Stack>
 
 			<Stack alignItems="center" justifyContent="center" p={2}>
-				<Icon as={EyeIcon} color="teal.600" fontSize="xl" />
+				<Icon as={RiEyeFill} color="teal.600" fontSize="xl" />
 				<Text color="teal.600" fontSize="md">
 					{current?.views?.toLocaleString()}
 				</Text>
@@ -32,7 +32,7 @@ export default function ImageStats() {
 
 			<a href={current?.links.self} target="_blank" rel="noreferrer">
 				<Stack alignItems="center" justifyContent="center" p={2}>
-					<Icon as={DownloadIcon} color="teal.600" fontSize="xl" />
+					<Icon as={RiDownloadFill} color="teal.600" fontSize="xl" />
 					<Text color="teal.600" fontSize="md">
 						{current?.downloads?.toLocaleString()}
 					</Text>
