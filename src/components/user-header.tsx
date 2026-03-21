@@ -1,5 +1,5 @@
 import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
-import { useImage } from "@/context/ImageContext";
+import { useImage } from "@/context/image-context";
 
 export default function UserHeader() {
 	const { current } = useImage();

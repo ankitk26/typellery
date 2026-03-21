@@ -1,6 +1,6 @@
 import { Flex, Icon, Stack, Text } from "@chakra-ui/react";
 import { RiDownloadFill, RiEyeFill, RiHeartFill } from "@remixicon/react";
-import { useImage } from "@/context/ImageContext";
+import { useImage } from "@/context/image-context";
 
 export default function ImageStats() {
 	const { current } = useImage();

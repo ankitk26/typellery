@@ -1,6 +1,6 @@
 import { Button, Flex } from "@chakra-ui/react";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "@remixicon/react";
-import { useImage } from "@/context/ImageContext";
+import { useImage } from "@/context/image-context";
 
 export default function PagePagination() {
 	const { currentPage, totalPages, setCurrentPage } = useImage();
