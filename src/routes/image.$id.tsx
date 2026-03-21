@@ -1,6 +1,6 @@
 import { Box, Flex, Image, Spinner, Text } from "@chakra-ui/react";
-import { useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
+import { useEffect } from "react";
 import ImageInfoHeader from "@/components/ImageInfoHeader";
 import { useImage } from "@/context/ImageContext";
 

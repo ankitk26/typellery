@@ -13,7 +13,9 @@ export default function PagePagination() {
 			<Button
 				size="sm"
 				variant="ghost"
-				onClick={() => setCurrentPage((p: number) => Math.max(1, p - 1))}
+				onClick={() =>
+					setCurrentPage((p: number) => Math.max(1, p - 1))
+				}
 				disabled={currentPage === 1}
 			>
 				<RiArrowLeftSLine size={18} />
