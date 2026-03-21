@@ -17,7 +17,8 @@ export default function Main() {
 	});
 
 	const images = data?.results ?? [];
-	const totalPages = data?.total_pages ?? 0;
+	const totalPages =
+		images.length === 0 && !isLoading ? page - 1 : (data?.total_pages ?? 0);
 
 	const setCurrentPage = (p: number | ((prev: number) => number)) => {
 		const newPage = typeof p === "function" ? p(page) : p;
@@ -46,11 +47,13 @@ export default function Main() {
 				</Box>
 			)}
 
-			<PagePagination
-				currentPage={page}
-				totalPages={totalPages}
-				setCurrentPage={setCurrentPage}
-			/>
+			{images.length > 0 && (
+				<PagePagination
+					currentPage={page}
+					totalPages={totalPages}
+					setCurrentPage={setCurrentPage}
+				/>
+			)}
 
 			{isLoading ? (
 				<Flex

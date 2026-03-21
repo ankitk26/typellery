@@ -12,8 +12,34 @@ export default function PagePagination({
 	totalPages,
 	setCurrentPage,
 }: PagePaginationProps) {
-	const pagesCount = totalPages ? (totalPages > 10 ? 10 : totalPages) : 10;
-	const pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
+	const buildPages = (): (number | string)[] => {
+		if (totalPages <= 10) {
+			return Array.from({ length: totalPages }, (_, i) => i + 1);
+		}
+
+		const windowStart = Math.max(2, currentPage - 4);
+		const windowEnd = Math.min(totalPages - 1, windowStart + 9);
+
+		const pages: (number | string)[] = [1];
+
+		if (windowStart > 2) {
+			pages.push("...");
+		}
+
+		for (let i = windowStart; i <= windowEnd; i++) {
+			pages.push(i);
+		}
+
+		if (windowEnd < totalPages - 1) {
+			pages.push("...");
+		}
+
+		pages.push(totalPages);
+
+		return pages;
+	};
+
+	const pages = buildPages();
 
 	return (
 		<Flex
@@ -40,7 +66,22 @@ export default function PagePagination({
 			</Button>
 
 			<Flex gap={1}>
-				{pages.map((page) => {
+				{pages.map((page, i) => {
+					if (page === "...") {
+						return (
+							<Text
+								key={`ellipsis_${i}`}
+								fontSize="xs"
+								color="#94a8b0"
+								px={1}
+								display="flex"
+								alignItems="center"
+							>
+								...
+							</Text>
+						);
+					}
+
 					const isCurrent = currentPage === page;
 					return (
 						<Button
@@ -56,7 +97,7 @@ export default function PagePagination({
 							color={isCurrent ? "white" : "#3d5a66"}
 							border="1px solid"
 							borderColor={isCurrent ? "#0d7377" : "transparent"}
-							onClick={() => setCurrentPage(page)}
+							onClick={() => setCurrentPage(page as number)}
 							_hover={{
 								bg: isCurrent ? "#0b6666" : "#e8f4f2",
 								borderColor: isCurrent ? "#0b6666" : "#b0d4d1",
@@ -73,9 +114,9 @@ export default function PagePagination({
 				size="sm"
 				variant="ghost"
 				onClick={() =>
-					setCurrentPage((p: number) => Math.min(pagesCount, p + 1))
+					setCurrentPage((p: number) => Math.min(totalPages, p + 1))
 				}
-				disabled={currentPage === pagesCount}
+				disabled={currentPage === totalPages}
 				color="#0d9488"
 				borderRadius="full"
 				_hover={{ bg: "#e8f4f2" }}
@@ -84,17 +125,6 @@ export default function PagePagination({
 			>
 				<RiArrowRightSLine size={20} />
 			</Button>
-
-			{totalPages > 0 && (
-				<Text
-					fontSize="xs"
-					className="text-muted"
-					ml={3}
-					display={{ base: "none", md: "block" }}
-				>
-					{currentPage} of {pagesCount}
-				</Text>
-			)}
 		</Flex>
 	);
 }
