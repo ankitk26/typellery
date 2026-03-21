@@ -5,29 +5,34 @@ import PagePagination from "../components/PagePagination";
 import { useImage } from "../context/ImageContext";
 
 export default function Main() {
-  const { totalPages, fetchImages, currentPage, loading, fetchSearchResults } =
-    useImage();
+	const {
+		totalPages,
+		fetchImages,
+		currentPage,
+		loading,
+		fetchSearchResults,
+	} = useImage();
 
-  useEffect(() => {
-    if (totalPages === 0) {
-      fetchImages();
-      return;
-    }
-    fetchSearchResults();
-    // eslint-disable-next-line
-  }, [currentPage, totalPages]);
+	useEffect(() => {
+		if (totalPages === 0) {
+			fetchImages();
+			return;
+		}
+		fetchSearchResults();
+		// eslint-disable-next-line
+	}, [currentPage, totalPages]);
 
-  return (
-    <Box>
-      <PagePagination />
-      {loading ? (
-        <Spinner size="md" />
-      ) : (
-        <>
-          <ImagesGrid />
-          <PagePagination />
-        </>
-      )}
-    </Box>
-  );
+	return (
+		<Box>
+			<PagePagination />
+			{loading ? (
+				<Spinner size="md" />
+			) : (
+				<>
+					<ImagesGrid />
+					<PagePagination />
+				</>
+			)}
+		</Box>
+	);
 }
