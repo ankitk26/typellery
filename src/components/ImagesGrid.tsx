@@ -1,6 +1,6 @@
 import Masonry from "react-masonry-css";
-import { useImage } from "../context/ImageContext";
-import ImageItem from "./ImageItem";
+import { useImage } from "@/context/ImageContext";
+import ImageItem from "@/components/ImageItem";
 
 export default function ImagesGrid() {
 	const { images } = useImage();

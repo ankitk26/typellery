@@ -1,8 +1,8 @@
 import { Box, Spinner } from "@chakra-ui/react";
 import { useEffect } from "react";
-import ImagesGrid from "../components/ImagesGrid";
-import PagePagination from "../components/PagePagination";
-import { useImage } from "../context/ImageContext";
+import ImagesGrid from "@/components/ImagesGrid";
+import PagePagination from "@/components/PagePagination";
+import { useImage } from "@/context/ImageContext";
 
 export default function Main() {
 	const {

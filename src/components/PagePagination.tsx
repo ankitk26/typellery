@@ -9,7 +9,7 @@ import {
 } from "@ajna/pagination";
 import { Icon } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/solid";
-import { useImage } from "../context/ImageContext";
+import { useImage } from "@/context/ImageContext";
 
 export default function PagePagination() {
 	const { currentPage, totalPages, setCurrentPage } = useImage();

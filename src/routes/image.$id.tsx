@@ -1,8 +1,8 @@
 import { Box, Flex, Image, Spinner, Text } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useParams } from "@tanstack/react-router";
-import ImageInfoHeader from "../components/ImageInfoHeader";
-import { useImage } from "../context/ImageContext";
+import ImageInfoHeader from "@/components/ImageInfoHeader";
+import { useImage } from "@/context/ImageContext";
 
 export default function ImageDetails() {
 	const { id } = useParams({ from: "/image/$id" });
