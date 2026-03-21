@@ -7,7 +7,7 @@ interface IProps {
 
 export default function ImageItem({ image }: IProps) {
 	return (
-		<Link to="/image/$id" params={{ id: image.id }}>
+		<Link to="/images/$id" params={{ id: image.id }}>
 			<Box p={2} border="1px" borderColor="gray.200" rounded="md">
 				<Image
 					src={image.urls.small}

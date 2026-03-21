@@ -1,10 +1,17 @@
 import { Button, Flex } from "@chakra-ui/react";
 import { RiArrowLeftSLine, RiArrowRightSLine } from "@remixicon/react";
-import { useImage } from "@/context/image-context";
 
-export default function PagePagination() {
-	const { currentPage, totalPages, setCurrentPage } = useImage();
+interface PagePaginationProps {
+	currentPage: number;
+	totalPages: number;
+	setCurrentPage: (page: number | ((prev: number) => number)) => void;
+}
 
+export default function PagePagination({
+	currentPage,
+	totalPages,
+	setCurrentPage,
+}: PagePaginationProps) {
 	const pagesCount = totalPages ? (totalPages > 10 ? 10 : totalPages) : 10;
 	const pages = Array.from({ length: pagesCount }, (_, i) => i + 1);
 

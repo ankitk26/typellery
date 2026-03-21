@@ -1,10 +1,11 @@
 import Masonry from "react-masonry-css";
 import ImageItem from "@/components/image-item";
-import { useImage } from "@/context/image-context";
 
-export default function ImagesGrid() {
-	const { images } = useImage();
+interface ImagesGridProps {
+	images: Images;
+}
 
+export default function ImagesGrid({ images }: ImagesGridProps) {
 	const breakpoints = {
 		default: 3,
 		1100: 2,
@@ -23,6 +24,5 @@ export default function ImagesGrid() {
 				</div>
 			))}
 		</Masonry>
-		// <pre>{JSON.stringify(images)}</pre>
 	);
 }

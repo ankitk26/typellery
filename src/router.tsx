@@ -1,17 +1,21 @@
 import { createRoute, createRouter } from "@tanstack/react-router";
 import { rootRoute } from "@/routes/__root";
-import ImageDetails from "@/routes/image.$id";
+import ImageDetails from "@/routes/images.$id";
 import Main from "@/routes/index";
 
 const indexRoute = createRoute({
 	getParentRoute: () => rootRoute,
 	path: "/",
+	validateSearch: (search: Record<string, unknown>) => ({
+		search: (search.search as string) || "",
+		page: Number(search.page) || 1,
+	}),
 	component: Main,
 });
 
 const imageRoute = createRoute({
 	getParentRoute: () => rootRoute,
-	path: "/image/$id",
+	path: "/images/$id",
 	component: ImageDetails,
 });
 

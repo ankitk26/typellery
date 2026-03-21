@@ -11,7 +11,7 @@ export default function Header() {
 			alignItems="center"
 			justifyContent="space-between"
 		>
-			<Link to="/">
+			<Link to="/" search={{ search: "", page: 1 }}>
 				<Heading color="white">Typellary</Heading>
 			</Link>
 
