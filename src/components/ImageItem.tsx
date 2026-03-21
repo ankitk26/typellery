@@ -1,5 +1,5 @@
 import { Avatar, Box, Flex, Image, Text } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Link } from "@tanstack/react-router";
 
 interface IProps {
 	image: Image;
@@ -7,7 +7,7 @@ interface IProps {
 
 export default function ImageItem({ image }: IProps) {
 	return (
-		<Link to={`/image/${image.id}`}>
+		<Link to="/image/$id" params={{ id: image.id }}>
 			<Box p={2} border="1px" borderColor="gray.200" rounded="md">
 				<Image
 					src={image.urls.small}

@@ -30,7 +30,7 @@ export default function ImageProvider({ children }: any) {
 	const itemsPerPage: number = 20;
 	const config = {
 		headers: {
-			Authorization: `Client-ID ${process.env.REACT_APP_ACCESS_KEY}`,
+			Authorization: `Client-ID ${import.meta.env.VITE_ACCESS_KEY}`,
 		},
 	};
 	const BASE_URL = "https://api.unsplash.com";
