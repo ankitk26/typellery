@@ -76,18 +76,28 @@ export default function ImageStats({ image }: ImageStatsProps) {
 				rel="noreferrer"
 				style={{ textDecoration: "none", color: "inherit" }}
 			>
-				<Flex alignItems="center" gap={3}>
+				<Flex
+					alignItems="center"
+					gap={3}
+					borderRadius="8px"
+					py={1}
+					cursor="pointer"
+					transition="all 0.15s ease"
+					_hover={{
+						bg: "#f0fdfa",
+					}}
+				>
 					<Box
 						w="32px"
 						h="32px"
 						borderRadius="8px"
-						bg="#f5f0eb"
+						bg="#0d9488"
 						display="flex"
 						alignItems="center"
 						justifyContent="center"
 						flexShrink={0}
 					>
-						<RiDownloadFill size={15} color="#0d9488" />
+						<RiDownloadFill size={15} color="white" />
 					</Box>
 					<Flex flexDirection="column">
 						<Text
