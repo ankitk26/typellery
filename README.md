@@ -30,10 +30,10 @@ VITE_ACCESS_KEY=your_unsplash_access_key
 
 | Command        | Description                         |
 | -------------- | ----------------------------------- |
-| `pnpm dev`     | Start dev server                    |
-| `pnpm build`   | Type-check and build for production |
-| `pnpm preview` | Preview production build            |
-| `pnpm fmt`     | Format code                         |
+| `vp dev`       | Start dev server                    |
+| `vp build`     | Type-check and build for production |
+| `vp preview`   | Preview production build            |
+| `vp fmt .`     | Format code                         |
 
 ## Routes
 
