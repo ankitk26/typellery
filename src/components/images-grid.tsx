@@ -1,4 +1,3 @@
-import Masonry from "react-masonry-css";
 import ImageItem from "@/components/image-item";
 
 interface ImagesGridProps {
@@ -6,23 +5,13 @@ interface ImagesGridProps {
 }
 
 export default function ImagesGrid({ images }: ImagesGridProps) {
-	const breakpoints = {
-		default: 3,
-		1100: 2,
-		700: 1,
-	};
-
 	return (
-		<Masonry
-			breakpointCols={breakpoints}
-			className="my-masonry-grid"
-			columnClassName="my-masonry-grid_column"
-		>
+		<div className="columns-1 gap-4 space-y-4 sm:columns-2 lg:columns-3">
 			{images.map((image, index) => (
-				<div key={image.id}>
+				<div key={image.id} className="break-inside-avoid">
 					<ImageItem image={image} index={index} />
 				</div>
 			))}
-		</Masonry>
+		</div>
 	);
 }

@@ -1,7 +1,3 @@
-import { defaultSystem } from "@chakra-ui/react";
-
-export const system = defaultSystem;
-
 export const palette = {
 	tealDeep: "#0d4f4f",
 	tealRich: "#0a6e6e",

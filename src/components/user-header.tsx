@@ -1,5 +1,6 @@
-import { Avatar, Box, Flex, Text } from "@chakra-ui/react";
-import { RiCameraLine } from "@remixicon/react";
+import { Camera01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 interface UserHeaderProps {
 	image: Image;
@@ -7,46 +8,33 @@ interface UserHeaderProps {
 
 export default function UserHeader({ image }: UserHeaderProps) {
 	return (
-		<a href={image.user.links.html} target="_blank" rel="noreferrer">
-			<Flex alignItems="center" gap={4}>
-				<Avatar.Root boxSize="52px" flexShrink={0}>
-					<Avatar.Image
-						src={image.user.profile_image.large}
-						style={{
-							width: "100%",
-							height: "100%",
-							objectFit: "cover",
-						}}
-					/>
-					<Avatar.Fallback
-						style={{ fontSize: "18px", fontWeight: 500 }}
-					>
+		<a
+			href={image.user.links.html}
+			target="_blank"
+			rel="noreferrer"
+			className="block transition-opacity hover:opacity-80"
+		>
+			<div className="flex items-center gap-3.5">
+				<Avatar className="h-12 w-12 shrink-0">
+					<AvatarImage src={image.user.profile_image.large} />
+					<AvatarFallback className="text-lg font-medium">
 						{image.user.name?.[0]}
-					</Avatar.Fallback>
-				</Avatar.Root>
-				<Box>
-					<Text
-						fontSize="md"
-						fontWeight={600}
-						className="text-heading"
-					>
+					</AvatarFallback>
+				</Avatar>
+				<div>
+					<p className="text-base font-semibold text-foreground">
 						{image.user.name}
-					</Text>
-					<Flex alignItems="center" gap={"4px"}>
-						<RiCameraLine
-							size={14}
-							color="#94a8b0"
-							style={{ flexShrink: 0 }}
+					</p>
+					<div className="flex items-center gap-1 text-muted-foreground">
+						<HugeiconsIcon
+							icon={Camera01Icon}
+							size={13}
+							className="shrink-0"
 						/>
-						<span
-							className="text-muted"
-							style={{ fontSize: "0.75rem", lineHeight: 1 }}
-						>
-							@{image.user.username}
-						</span>
-					</Flex>
-				</Box>
-			</Flex>
+						<span className="text-xs">@{image.user.username}</span>
+					</div>
+				</div>
+			</div>
 		</a>
 	);
 }

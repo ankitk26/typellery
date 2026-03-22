@@ -1,4 +1,3 @@
-import { Box, Flex, Heading, Spinner, Text } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useSearch } from "@tanstack/react-router";
 import ImagesGrid from "@/components/images-grid";
@@ -31,75 +30,57 @@ export default function Main() {
 	};
 
 	return (
-		<Box>
+		<div>
 			{search && (
-				<Box mb={8} className="animate-fade-in">
-					<p className="label">Results for</p>
-					<Heading
-						as="h2"
-						fontSize={{ base: "2xl", md: "3xl" }}
-						fontWeight={600}
-						className="text-heading"
-						fontStyle="italic"
-					>
+				<div className="mb-8">
+					<p className="text-xs font-medium tracking-[0.15em] text-muted-foreground uppercase">
+						Results for
+					</p>
+					<h2 className="font-heading text-2xl font-semibold text-foreground italic md:text-3xl">
 						&ldquo;{search}&rdquo;
-					</Heading>
-				</Box>
+					</h2>
+				</div>
 			)}
 
 			{images.length > 0 && (
-				<PagePagination
-					currentPage={page}
-					totalPages={totalPages}
-					setCurrentPage={setCurrentPage}
-				/>
+				<div className="mb-8">
+					<PagePagination
+						currentPage={page}
+						totalPages={totalPages}
+						setCurrentPage={setCurrentPage}
+					/>
+				</div>
 			)}
 
 			{isLoading ? (
-				<Flex
-					justifyContent="center"
-					alignItems="center"
-					minH="50vh"
-					className="animate-fade-in"
-				>
-					<Spinner size="lg" color="#0d9488" />
-				</Flex>
+				<div className="flex min-h-[50vh] items-center justify-center">
+					<div className="h-8 w-8 animate-spin rounded-full border-2 border-muted border-t-primary" />
+				</div>
 			) : (
 				<>
 					{images.length === 0 ? (
-						<Flex
-							justifyContent="center"
-							alignItems="center"
-							minH="40vh"
-							flexDirection="column"
-							gap={4}
-						>
-							<Text
-								className="text-heading"
-								fontSize="2xl"
-								fontStyle="italic"
-							>
+						<div className="flex min-h-[40vh] flex-col items-center justify-center gap-3">
+							<p className="font-heading text-2xl text-muted-foreground italic">
 								No images found
-							</Text>
-							<p
-								className="text-muted"
-								style={{ fontSize: "0.875rem" }}
-							>
+							</p>
+							<p className="text-sm text-muted-foreground">
 								Try a different search term
 							</p>
-						</Flex>
+						</div>
 					) : (
 						<>
 							<ImagesGrid images={images} />
-							<PagePagination
-								currentPage={page}
-								totalPages={totalPages}
-								setCurrentPage={setCurrentPage}
-							/>
+							<div className="mt-12">
+								<PagePagination
+									currentPage={page}
+									totalPages={totalPages}
+									setCurrentPage={setCurrentPage}
+								/>
+							</div>
 						</>
 					)}
 				</>
 			)}
-		</Box>
+		</div>
 	);
 }

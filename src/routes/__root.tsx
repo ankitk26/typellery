@@ -1,7 +1,6 @@
-import { Box, ChakraProvider, Flex } from "@chakra-ui/react";
 import { createRootRoute, Outlet } from "@tanstack/react-router";
 import Header from "@/components/header";
-import { system } from "@/theme";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 export const rootRoute = createRootRoute({
 	component: RootLayout,
@@ -9,21 +8,13 @@ export const rootRoute = createRootRoute({
 
 function RootLayout() {
 	return (
-		<ChakraProvider value={system}>
-			<Flex flexDir="column" h="100vh" bg="#faf8f5">
+		<TooltipProvider>
+			<div className="flex h-screen flex-col bg-background">
 				<Header />
-				<Box
-					flex="1"
-					minH={0}
-					maxW="1400px"
-					w="full"
-					mx="auto"
-					px={{ base: 4, md: 8, lg: 12 }}
-					py={{ base: 4, md: 6 }}
-				>
+				<div className="mx-auto min-h-0 w-full max-w-[1400px] flex-1 overflow-y-auto px-4 py-4 pb-20 md:px-8 md:py-6 md:pb-24 lg:px-12">
 					<Outlet />
-				</Box>
-			</Flex>
-		</ChakraProvider>
+				</div>
+			</div>
+		</TooltipProvider>
 	);
 }

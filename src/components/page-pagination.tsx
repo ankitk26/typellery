@@ -1,5 +1,6 @@
-import { Button, Flex, Text } from "@chakra-ui/react";
-import { RiArrowLeftSLine, RiArrowRightSLine } from "@remixicon/react";
+import { ArrowLeft01Icon, ArrowRight01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
+import { Button } from "@/components/ui/button";
 
 interface PagePaginationProps {
 	currentPage: number;
@@ -42,43 +43,29 @@ export default function PagePagination({
 	const pages = buildPages();
 
 	return (
-		<Flex
-			mb={8}
-			alignItems="center"
-			justifyContent="center"
-			gap={1}
-			className="animate-fade-in"
-		>
+		<div className="flex items-center justify-center gap-1">
 			<Button
-				size="sm"
 				variant="ghost"
+				size="icon"
+				className="h-8 w-8 rounded-full text-primary"
 				onClick={() =>
 					setCurrentPage((p: number) => Math.max(1, p - 1))
 				}
 				disabled={currentPage === 1}
-				color="#0d9488"
-				borderRadius="full"
-				_hover={{ bg: "#e8f4f2" }}
-				_disabled={{ color: "#94a8b0", cursor: "not-allowed" }}
-				transition="all 0.2s ease"
 			>
-				<RiArrowLeftSLine size={20} />
+				<HugeiconsIcon icon={ArrowLeft01Icon} size={18} />
 			</Button>
 
-			<Flex gap={1}>
+			<div className="flex gap-0.5">
 				{pages.map((page, i) => {
 					if (page === "...") {
 						return (
-							<Text
+							<span
 								key={`ellipsis_${i}`}
-								fontSize="xs"
-								color="#94a8b0"
-								px={1}
-								display="flex"
-								alignItems="center"
+								className="flex items-center px-1.5 text-xs text-muted-foreground"
 							>
 								...
-							</Text>
+							</span>
 						);
 					}
 
@@ -86,45 +73,28 @@ export default function PagePagination({
 					return (
 						<Button
 							key={`pagination_page_${page}`}
-							size="sm"
-							w={8}
-							h={8}
-							minW={8}
-							rounded="full"
-							fontSize="xs"
-							fontWeight={isCurrent ? 600 : 400}
-							bg={isCurrent ? "#0d7377" : "transparent"}
-							color={isCurrent ? "white" : "#3d5a66"}
-							border="1px solid"
-							borderColor={isCurrent ? "#0d7377" : "transparent"}
+							variant={isCurrent ? "default" : "ghost"}
+							size="icon"
+							className="h-8 w-8 rounded-full text-xs"
 							onClick={() => setCurrentPage(page as number)}
-							_hover={{
-								bg: isCurrent ? "#0b6666" : "#e8f4f2",
-								borderColor: isCurrent ? "#0b6666" : "#b0d4d1",
-							}}
-							transition="all 0.25s ease"
 						>
 							{page}
 						</Button>
 					);
 				})}
-			</Flex>
+			</div>
 
 			<Button
-				size="sm"
 				variant="ghost"
+				size="icon"
+				className="h-8 w-8 rounded-full text-primary"
 				onClick={() =>
 					setCurrentPage((p: number) => Math.min(totalPages, p + 1))
 				}
 				disabled={currentPage === totalPages}
-				color="#0d9488"
-				borderRadius="full"
-				_hover={{ bg: "#e8f4f2" }}
-				_disabled={{ color: "#94a8b0", cursor: "not-allowed" }}
-				transition="all 0.2s ease"
 			>
-				<RiArrowRightSLine size={20} />
+				<HugeiconsIcon icon={ArrowRight01Icon} size={18} />
 			</Button>
-		</Flex>
+		</div>
 	);
 }

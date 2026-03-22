@@ -1,5 +1,5 @@
-import { Box, Flex, Image, Spinner, Text } from "@chakra-ui/react";
-import { RiArrowLeftLine } from "@remixicon/react";
+import { ArrowLeft01Icon } from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 import { useQuery } from "@tanstack/react-query";
 import { useParams } from "@tanstack/react-router";
 import ImageStats from "@/components/image-stats";
@@ -15,101 +15,53 @@ export default function ImageDetails() {
 
 	if (isLoading || !current) {
 		return (
-			<Flex
-				justifyContent="center"
-				alignItems="center"
-				h="full"
-				className="animate-fade-in"
-			>
-				<Spinner size="lg" color="#0d9488" />
-			</Flex>
+			<div className="flex h-full items-center justify-center">
+				<div className="h-8 w-8 animate-spin rounded-full border-2 border-muted border-t-primary" />
+			</div>
 		);
 	}
 
 	return (
-		<Flex flexDir="column" h="full" overflow="hidden">
-			<Box
-				as="button"
+		<div className="flex h-full flex-col overflow-hidden">
+			<button
+				type="button"
 				onClick={() => window.history.back()}
-				display="inline-flex"
-				alignItems="center"
-				gap={2}
-				mb={4}
-				fontSize="sm"
-				fontWeight={500}
-				cursor="pointer"
-				transition="all 0.2s ease"
-				_hover={{ color: "#0d9488", transform: "translateX(-4px)" }}
-				bg="transparent"
-				border="none"
-				className="text-body animate-fade-in"
-				flexShrink={0}
+				className="mb-4 inline-flex items-center gap-2 text-sm font-medium text-muted-foreground transition-all hover:-translate-x-1 hover:text-primary"
 			>
-				<RiArrowLeftLine size={18} />
+				<HugeiconsIcon icon={ArrowLeft01Icon} size={16} />
 				Back to gallery
-			</Box>
+			</button>
 
-			<Flex
-				flex={1}
-				minH={0}
-				gap={6}
-				flexDirection={{ base: "column", md: "row" }}
-			>
-				<Box
-					flex="1"
-					minW={0}
-					minH={0}
-					className="card animate-fade-in-up"
-					p={2}
-					overflow="hidden"
-					boxShadow="0 20px 60px -15px rgba(13,79,79,0.1)"
-				>
-					<Image
+			<div className="flex min-h-0 flex-1 flex-col gap-6 md:flex-row">
+				<div className="min-h-0 min-w-0 flex-1 overflow-hidden rounded-xl border border-border/50 bg-card p-2 shadow-xl shadow-black/5">
+					<img
 						src={current.urls.regular}
 						alt={current.description || current.id}
-						w="full"
-						h="full"
-						objectFit="contain"
-						borderRadius="12px"
-						display="block"
+						className="block h-full w-full rounded-lg object-contain"
 					/>
-				</Box>
+				</div>
 
-				<Flex
-					flexDir="column"
-					w={{ base: "full", md: "300px" }}
-					flexShrink={0}
-					gap={4}
-					className="animate-fade-in-up stagger-2"
-					overflow="auto"
-				>
-					<Box className="card" p={5}>
+				<div className="flex w-full shrink-0 flex-col gap-4 overflow-auto md:w-[300px]">
+					<div className="rounded-xl border border-border/50 bg-card p-5">
 						<UserHeader image={current} />
-					</Box>
+					</div>
 
-					<Box className="card" p={5}>
+					<div className="rounded-xl border border-border/50 bg-card p-5">
 						<ImageStats image={current} />
-					</Box>
+					</div>
 
 					{current.description && (
-						<Box className="card" p={5}>
-							<p
-								className="label"
-								style={{ marginBottom: "0.75rem" }}
-							>
+						<div className="rounded-xl border border-border/50 bg-card p-5">
+							<p className="mb-3 text-xs font-medium tracking-[0.15em] text-muted-foreground uppercase">
 								Description
 							</p>
-							<Text
-								className="text-body"
-								fontSize="sm"
-								lineHeight={1.8}
-							>
+							<p className="text-sm leading-relaxed text-foreground/80">
 								{current.description}
-							</Text>
-						</Box>
+							</p>
+						</div>
 					)}
-				</Flex>
-			</Flex>
-		</Flex>
+				</div>
+			</div>
+		</div>
 	);
 }

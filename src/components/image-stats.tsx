@@ -1,5 +1,9 @@
-import { Box, Flex, Text } from "@chakra-ui/react";
-import { RiDownloadFill, RiEyeFill, RiHeartFill } from "@remixicon/react";
+import {
+	Download01Icon,
+	ViewIcon,
+	FavouriteIcon,
+} from "@hugeicons/core-free-icons";
+import { HugeiconsIcon } from "@hugeicons/react";
 
 interface ImageStatsProps {
 	image: Image;
@@ -7,116 +11,68 @@ interface ImageStatsProps {
 
 export default function ImageStats({ image }: ImageStatsProps) {
 	return (
-		<Flex flexDir="column" gap={4}>
-			<Flex alignItems="center" gap={3}>
-				<Box
-					w="32px"
-					h="32px"
-					borderRadius="8px"
-					bg="#f5f0eb"
-					display="flex"
-					alignItems="center"
-					justifyContent="center"
-					flexShrink={0}
-				>
-					<RiHeartFill size={15} color="#0d9488" />
-				</Box>
-				<Flex flexDirection="column">
-					<Text
-						fontSize="sm"
-						fontWeight={600}
+		<div className="flex flex-col gap-4">
+			<div className="flex items-center gap-3">
+				<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+					<HugeiconsIcon
+						icon={FavouriteIcon}
+						size={20}
 						className="text-primary"
-						lineHeight={1}
-					>
+						strokeWidth={2}
+					/>
+				</div>
+				<div className="flex flex-col gap-0.5">
+					<p className="text-sm leading-none font-semibold text-foreground">
 						{image.likes.toLocaleString()}
-					</Text>
-					<span
-						className="label"
-						style={{ fontSize: "0.55rem", marginTop: "2px" }}
-					>
+					</p>
+					<span className="text-[10px] text-muted-foreground">
 						Likes
 					</span>
-				</Flex>
-			</Flex>
+				</div>
+			</div>
 
-			<Flex alignItems="center" gap={3}>
-				<Box
-					w="32px"
-					h="32px"
-					borderRadius="8px"
-					bg="#f5f0eb"
-					display="flex"
-					alignItems="center"
-					justifyContent="center"
-					flexShrink={0}
-				>
-					<RiEyeFill size={15} color="#0d9488" />
-				</Box>
-				<Flex flexDirection="column">
-					<Text
-						fontSize="sm"
-						fontWeight={600}
+			<div className="flex items-center gap-3">
+				<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+					<HugeiconsIcon
+						icon={ViewIcon}
+						size={20}
 						className="text-primary"
-						lineHeight={1}
-					>
-						{image.views?.toLocaleString() ?? "—"}
-					</Text>
-					<span
-						className="label"
-						style={{ fontSize: "0.55rem", marginTop: "2px" }}
-					>
+						strokeWidth={2}
+					/>
+				</div>
+				<div className="flex flex-col gap-0.5">
+					<p className="text-sm leading-none font-semibold text-foreground">
+						{image.views?.toLocaleString() ?? "\u2014"}
+					</p>
+					<span className="text-[10px] text-muted-foreground">
 						Views
 					</span>
-				</Flex>
-			</Flex>
+				</div>
+			</div>
 
 			<a
 				href={image.links.download}
 				target="_blank"
 				rel="noreferrer"
-				style={{ textDecoration: "none", color: "inherit" }}
+				className="flex items-center gap-3 rounded-lg transition-colors hover:bg-primary/5"
 			>
-				<Flex
-					alignItems="center"
-					gap={3}
-					borderRadius="8px"
-					py={1}
-					cursor="pointer"
-					transition="all 0.15s ease"
-					_hover={{
-						bg: "#f0fdfa",
-					}}
-				>
-					<Box
-						w="32px"
-						h="32px"
-						borderRadius="8px"
-						bg="#0d9488"
-						display="flex"
-						alignItems="center"
-						justifyContent="center"
-						flexShrink={0}
-					>
-						<RiDownloadFill size={15} color="white" />
-					</Box>
-					<Flex flexDirection="column">
-						<Text
-							fontSize="sm"
-							fontWeight={600}
-							className="text-primary"
-							lineHeight={1}
-						>
-							{image.downloads?.toLocaleString() ?? "—"}
-						</Text>
-						<span
-							className="label"
-							style={{ fontSize: "0.55rem", marginTop: "2px" }}
-						>
-							Download
-						</span>
-					</Flex>
-				</Flex>
+				<div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary">
+					<HugeiconsIcon
+						icon={Download01Icon}
+						size={20}
+						className="text-primary-foreground"
+						strokeWidth={2}
+					/>
+				</div>
+				<div className="flex flex-col gap-0.5">
+					<p className="text-sm leading-none font-semibold text-foreground">
+						{image.downloads?.toLocaleString() ?? "\u2014"}
+					</p>
+					<span className="text-[10px] text-muted-foreground">
+						Download
+					</span>
+				</div>
 			</a>
-		</Flex>
+		</div>
 	);
 }
