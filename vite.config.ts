@@ -1,21 +1,13 @@
 import path from "path";
 import { fileURLToPath } from "url";
+import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite-plus";
+import { defineConfig } from "vite";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
-	fmt: {
-		ignorePatterns: [],
-		useTabs: true,
-		tabWidth: 4,
-		printWidth: 80,
-		sortImports: {
-			newlinesBetween: false,
-		},
-	},
-	plugins: [react()],
+	plugins: [react(), tailwindcss()],
 	resolve: {
 		alias: {
 			"@": path.resolve(__dirname, "./src"),

@@ -28,12 +28,12 @@ VITE_ACCESS_KEY=your_unsplash_access_key
 
 ## Scripts
 
-| Command        | Description                         |
-| -------------- | ----------------------------------- |
-| `vp dev`       | Start dev server                    |
-| `vp build`     | Type-check and build for production |
-| `vp preview`   | Preview production build            |
-| `vp fmt .`     | Format code                         |
+| Command      | Description                         |
+| ------------ | ----------------------------------- |
+| `vp dev`     | Start dev server                    |
+| `vp build`   | Type-check and build for production |
+| `vp preview` | Preview production build            |
+| `vp fmt .`   | Format code                         |
 
 ## Routes
 
